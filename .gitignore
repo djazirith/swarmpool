@@ -1,3 +1,7 @@
+# Project specific
+/frames/
+/cc/
+
 # Compiled class file
 *.class
 

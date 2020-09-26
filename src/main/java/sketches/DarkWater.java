@@ -13,15 +13,13 @@ public final class DarkWater extends PApplet {
     private Particle cursor;
 
     public void settings(){
-        size(1 << 8, 1 << 7, P2D);
-        smooth(4);
+        size(1 << 9, 1 << 8, FX2D);
 
         ps = new ParticleSystem();
-//        ps.setIntegrator(ParticleSystem.MODIFIED_EULER);
         ps.setIntegrator(ParticleSystem.RUNGE_KUTTA);
 
         float damp = 0.33f;
-        float ks = 0.1f;
+        float ks = 0.25f;
         cursor = ps.makeParticle(0, width * 0.5f, height * 0.5f, 0);
         cursor.makeFixed();
 
@@ -57,7 +55,7 @@ public final class DarkWater extends PApplet {
             Particle p = ps.getParticle(i);
             float px = p.position().x();
             float py = p.position().y();
-            fill(55, map(p.force().length(), 0, 1, 225, 205));
+            fill(55, map(p.force().length(), 0, 1, 255, 25));
             ellipse(px, py, d, d);
         }
 
@@ -75,7 +73,7 @@ public final class DarkWater extends PApplet {
     }
 
     public void mousePressed() {
-        cursor.setMass(1);
+        cursor.setMass(2.2f);
     }
 
     public void mouseReleased() {
